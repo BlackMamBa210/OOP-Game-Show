@@ -16,13 +16,24 @@ class Game {
     createPhrases() {
         const phrases = [
             new Phrase("Life is like a box of chocolates"),
-            new Phrase("There is not trying"),
+            new Phrase("There is no trying"),
             new Phrase("May the foce be with you"),
             new Phrase("You have to see the matrix for yourself"),
             new Phrase("You talking to me")
         ];
 
         return phrases;
+    };
+
+    /**
+     * Selects random phrase from phrases property
+     * @return {Object} Phrase object chosen to be used
+     */
+    getRandomPhrase() {
+        const index = Math.floor(Math.random() * this.phrases.length);
+        const phrase = this.phrases[index];
+
+        return phrase
     };
 }
 
