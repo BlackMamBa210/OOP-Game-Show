@@ -45,7 +45,7 @@ class Game {
 
         game.activePhrase = game.getRandomPhrase();
         phrase.phrase = game.activePhrase;
-
+        phrase.phrase.addPhraseToDisplay();
 
         console.log(`Active Phrase - phrase: ${game.activePhrase}`);
     };
