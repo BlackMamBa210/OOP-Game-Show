@@ -10,6 +10,7 @@ class Phrase {
     /**
      * Display phrase on game board
      */
+
     addPhraseToDisplay() {
         const ul = document.querySelector("ul");
         const letter = this.phrase;
