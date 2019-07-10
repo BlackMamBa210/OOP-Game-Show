@@ -35,6 +35,20 @@ class Game {
 
         return phrase
     };
+
+    /**
+     * Begins game by selecting a random phrase and displaying it to user
+     */
+    startGame() {
+        const container = document.querySelector('.main-container');
+        container.firstElementChild.style.display = 'none';
+
+        game.activePhrase = game.getRandomPhrase();
+        phrase.phrase = game.activePhrase;
+
+
+        console.log(`Active Phrase - phrase: ${game.activePhrase}`);
+    };
 }
 
 // const game = new Game();
