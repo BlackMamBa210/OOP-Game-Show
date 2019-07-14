@@ -50,8 +50,8 @@ class Game {
         console.log(`Active Phrase - phrase: ${game.activePhrase}`);
     };
 
-    handleInteraction(KeyboardEvent) {
-        KeyboardEvent.diabled = true;
+    handleInteraction(key) {
+        key.diabled = true;
 
         if (phrase.checkLetter(key.textContent)) {
             key.classList += 'chosen';
@@ -72,8 +72,8 @@ class Game {
      * @return {boolean} True if game has been won, false if game wasn't won
      */
     checkForWin() {
-        const phraseLetters = [...this.activePhrase];
-        const phraseCount = letters.filter(element => element !== ' ').length;
+        const phraseLetters = [...this.game.activePhrase];
+        const phraseCount = phraseletters.filter(element => element !== ' ').length;
         const shownPhraseLetters = document.querySelectorAll('.show').length;
 
         if (shownPhraseLetters === phraseCount) {
@@ -88,14 +88,57 @@ class Game {
      * Removes a life from the scoreboard
      * Checks if player has remaining lives and ends game if player is out
      */
-    removeLife() {};
+    removeLife() {
+        const attempts = document.querySelectorAll('img[alt=\'Heart Icon\']').length;
+        attempts[attempts.length - 1].src = 'images/lostHeart.png';
+        attempts[attempts.length - 1].alt = 'Heart Lost';
+
+        if (!attempts.length) {
+            this.gameOver();
+        }
+    };
 
     /**
      * Displays game over message
      * @param {boolean} gameWon - Whether or not the user won the game
      */
-    gameOver(gameWon) {};
+    gameOver(gameWon) {
+        const resetGame = () => {
+            this.missed = 0;
+            const ul = document.querySelector('ul');
+            ul.innerHTML = '';
 
-}
+            const keyboard = document.querySelectorAll('button.key');
+            for (let i = 0; i < keyboard.length; i++) {
+                keyboard[i].className = 'key';
+                keyboard[i].disabled = '';
+                console.log('keyboard clear')
+            }
+
+            const hearts = document.querySelectorAll('li > img');
+            for (let i = 0; i < hearts.length; i++) {
+                hearts[i].src = 'images/liveHeart.png';
+                hearts[i].alt = 'Heart Icon';
+                console.log('Hearts clear')
+            }
+        };
+
+        if (this.checkForWin() === true) {
+            const overlay = document.querySelector('#overlay');
+            overlay.style.display = '';
+            overlay.className = 'win';
+            document.querySelector('#game-over-message').textContent = 'Victory!';
+            resetGame();
+
+        } else {
+            if (this.missed === 5) {
+                overlay.style.display = '';
+                overlay.className = 'lose';
+                document.querySelector('#game-over-message').textContent = 'Defeat!';
+                resetGame();
+            }
+        }
+    }
+};
 
 // const game = new Game();
