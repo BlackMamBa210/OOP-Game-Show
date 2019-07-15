@@ -72,7 +72,11 @@ class Game {
      * @return {boolean} True if game has been won, false if game wasn't won
      */
     checkForWin() {
-        return phrase === 0;
+        if (phrase === 0) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     /**
@@ -82,7 +86,7 @@ class Game {
      */
     removeLife() {
         const attempts = document.querySelectorAll('img[alt=\'Heart Icon\']').length;
-        attempts[attempts.length - 1].src = 'images/lostHeart.png';
+        attempts[attempts.length - 1].alt = 'images/lostHeart.png';
         attempts[attempts.length - 1].alt = 'Heart Lost';
 
         if (!attempts.length) {
