@@ -72,7 +72,7 @@ class Game {
      * @return {boolean} True if game has been won, false if game wasn't won
      */
     checkForWin() {
-        const phraseLetters = [...this.game.activePhrase];
+        const phraseLetters = [...this.activePhrase];
         const phraseCount = phraseletters.filter(element => element !== ' ').length;
         const shownPhraseLetters = document.querySelectorAll('.show').length;
 
