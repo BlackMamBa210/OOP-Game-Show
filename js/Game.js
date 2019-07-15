@@ -76,7 +76,7 @@ class Game {
         const phraseCount = phraseletters.filter(element => element !== ' ').length;
         const shownPhraseLetters = document.querySelectorAll('.show').length;
 
-        if (shownPhraseLetters === phraseCount) {
+        if (Phrase === phraseCount) {
             return true;
         } else {
             return false;
