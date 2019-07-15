@@ -43,22 +43,22 @@ class Game {
         const container = document.querySelector('.main-container');
         container.firstElementChild.style.display = 'none';
 
-        game.activePhrase = game.getRandomPhrase();
-        phrase.phrase = game.activePhrase;
+        this.activePhrase = this.getRandomPhrase();
+        phrase.phrase = this.activePhrase;
         phrase.phrase.addPhraseToDisplay();
 
-        console.log(`Active Phrase - phrase: ${game.activePhrase}`);
+        console.log(`Active Phrase - phrase: ${this.activePhrase}`);
     };
 
     handleInteraction(key) {
         key.diabled = true;
 
         if (phrase.checkLetter(key.textContent)) {
-            key.classList += 'chosen';
+            key.classList += ' chosen';
             phrase.showMatchedLetter(key.textContent);
             this.gameOver;
         } else {
-            key.classList += 'wrong';
+            key.classList += ' wrong';
             this.removeLife();
             this.missed++;
             this.gameOver();
@@ -72,15 +72,7 @@ class Game {
      * @return {boolean} True if game has been won, false if game wasn't won
      */
     checkForWin() {
-        const phraseLetters = [...this.activePhrase];
-        const phraseCount = phraseletters.filter(element => element !== ' ').length;
-        const shownPhraseLetters = document.querySelectorAll('.show').length;
-
-        if (Phrase === phraseCount) {
-            return true;
-        } else {
-            return false;
-        }
+        return phrase === 0;
     };
 
     /**
