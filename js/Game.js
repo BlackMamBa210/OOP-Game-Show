@@ -85,11 +85,11 @@ class Game {
      * Checks if player has remaining lives and ends game if player is out
      */
     removeLife() {
-        const attempts = document.querySelectorAll('img[alt=\'Heart Icon\']').length;
-        attempts[attempts.length - 1].alt = 'images/lostHeart.png';
-        attempts[attempts.length - 1].alt = 'Heart Lost';
+        const tries = document.querySelectorAll('img[alt=\'Heart Icon\']');
+        tries[tries.length - 1].src = 'images/lostHeart.png';
+        tries[tries.length - 1].alt = 'Heart Lost';
 
-        if (!attempts.length) {
+        if (!tries.length) {
             this.gameOver();
         }
     };
