@@ -98,7 +98,7 @@ class Game {
      * Displays game over message
      * @param {boolean} gameWon - Whether or not the user won the game
      */
-    gameOver() {
+    gameOver(gameWon) {
         const resetGame = function() {
             this.missed = 0;
             const ul = document.querySelector('ul');
