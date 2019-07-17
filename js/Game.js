@@ -89,7 +89,7 @@ class Game {
         tries[tries.length - 1].src = 'images/lostHeart.png';
         tries[tries.length - 1].alt = 'Heart Lost';
 
-        if (!tries.length) {
+        if (!tries === 5) {
             this.gameOver();
         }
     };
@@ -98,8 +98,8 @@ class Game {
      * Displays game over message
      * @param {boolean} gameWon - Whether or not the user won the game
      */
-    gameOver(gameWon) {
-        const resetGame = () => {
+    gameOver() {
+        const resetGame = function() {
             this.missed = 0;
             const ul = document.querySelector('ul');
             ul.innerHTML = '';
