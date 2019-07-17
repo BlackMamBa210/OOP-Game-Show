@@ -85,12 +85,14 @@ class Game {
      * Checks if player has remaining lives and ends game if player is out
      */
     removeLife() {
-        const tries = document.querySelectorAll('img[alt=\'Heart Icon\']');
-        tries[tries.length - 1].src = 'images/lostHeart.png';
-        tries[tries.length - 1].alt = 'Heart Lost';
+        const liveHearts = document.querySelectorAll('img');
+        const liveHeart = liveHearts[this.missed];
+        liveHeart.src = 'images/lostHeart.png';
 
-        if (!tries === 5) {
-            this.gameOver();
+        this.missed++;
+
+        if (this.missed === 5) {
+            this.gameOver('lose');
         }
     };
 
@@ -98,43 +100,5 @@ class Game {
      * Displays game over message
      * @param {boolean} gameWon - Whether or not the user won the game
      */
-    gameOver(gameWon) {
-        const resetGame = function() {
-            this.missed = 0;
-            const ul = document.querySelector('ul');
-            ul.innerHTML = '';
-
-            const keyboard = document.querySelectorAll('button.key');
-            for (let i = 0; i < keyboard.length; i++) {
-                keyboard[i].className = 'key';
-                keyboard[i].disabled = '';
-                console.log('keyboard clear')
-            }
-
-            const hearts = document.querySelectorAll('li > img');
-            for (let i = 0; i < hearts.length; i++) {
-                hearts[i].src = 'images/liveHeart.png';
-                hearts[i].alt = 'Heart Icon';
-                console.log('Hearts clear')
-            }
-        };
-
-        if (this.checkForWin() === true) {
-            const overlay = document.querySelector('#overlay');
-            overlay.style.display = '';
-            overlay.className = 'win';
-            document.querySelector('#game-over-message').textContent = 'Victory!';
-            resetGame();
-
-        } else {
-            if (this.missed === 5) {
-                overlay.style.display = '';
-                overlay.className = 'lose';
-                document.querySelector('#game-over-message').textContent = 'Defeat!';
-                resetGame();
-            }
-        }
-    }
+    gameOver(gameWon) {};
 };
-
-// const game = new Game();
