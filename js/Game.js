@@ -50,23 +50,6 @@ class Game {
         console.log(`Active Phrase - phrase: ${this.activePhrase}`);
     };
 
-    handleInteraction(key) {
-        key.diabled = true;
-
-        if (phrase.checkLetter(key.textContent)) {
-            key.classList += ' chosen';
-            phrase.showMatchedLetter(key.textContent);
-            this.gameOver;
-        } else {
-            key.classList += ' wrong';
-            this.removeLife();
-            this.missed++;
-            this.gameOver();
-        }
-        //console.log(handleInteraction());
-    }
-
-
     /**
      * Checks for winning move
      * @return {boolean} True if game has been won, false if game wasn't won
@@ -101,7 +84,7 @@ class Game {
      * @param {boolean} gameWon - Whether or not the user won the game
      */
     gameOver(gameWon) {
-        if (gameWon === false) {
+        if (gameWon) {
             document.querySelector('#overlay').className = 'lose';
             document.querySelector('#game-over-message').textContent = 'Defeat!';
         } else {
@@ -117,6 +100,21 @@ class Game {
      * @param (HTMLButtonElement) button - The clicked button element
      */
     handleInteraction(button) {
+        const letter = document.querySelector(button.textContent);
+
+        document.addEventListener('click', (e) => {
+            if (this.activePhrase) {
+                button.disabled = true;
+            } else if (this.activePhrase.checkLetter(letter)) {
+                this.activePhrase.showMatchedLetter(letter);
+                button.className = 'chosen';
+            } else if (this.checkForWin()) {
+                this.gameOver(true);
+            } else {
+                button.className = 'wrong'
+                this.removeLife();
+            }
+        });
         console.log(button);
     };
 };
