@@ -100,5 +100,23 @@ class Game {
      * Displays game over message
      * @param {boolean} gameWon - Whether or not the user won the game
      */
-    gameOver(gameWon) {};
+    gameOver(gameWon) {
+        if (gameWon === false) {
+            document.querySelector('#overlay').className = 'lose';
+            document.querySelector('#game-over-message').textContent = 'Defeat!';
+        } else {
+            document.querySelector('#overlay').className = 'win';
+            document.querySelector('#game-over-message').textContent = 'Victory!';
+        }
+
+        document.querySelector('#overlay').style = 'visability: visible';
+    };
+
+    /**
+     * Handles onscreen keyboard button clicks
+     * @param (HTMLButtonElement) button - The clicked button element
+     */
+    handleInteraction(button) {
+        console.log(button);
+    };
 };
