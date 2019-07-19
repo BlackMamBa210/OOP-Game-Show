@@ -95,26 +95,5 @@ class Game {
         document.querySelector('#overlay').style = 'visability: visible';
     };
 
-    /**
-     * Handles onscreen keyboard button clicks
-     * @param (HTMLButtonElement) button - The clicked button element
-     */
-    handleInteraction(button) {
-        const letter = document.querySelector(button.textContent);
 
-        document.addEventListener('click', (e) => {
-            if (this.activePhrase) {
-                button.disabled = true;
-            } else if (this.activePhrase.checkLetter(letter)) {
-                this.activePhrase.showMatchedLetter(letter);
-                button.className = 'chosen';
-            } else if (this.checkForWin()) {
-                this.gameOver(true);
-            } else {
-                button.className = 'wrong'
-                this.removeLife();
-            }
-        });
-        console.log(button);
-    };
 };
