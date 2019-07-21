@@ -94,6 +94,4 @@ class Game {
 
         document.querySelector('#overlay').style = 'visability: visible';
     };
-
-
 };
