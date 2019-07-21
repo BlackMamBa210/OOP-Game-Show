@@ -34,12 +34,14 @@ const game = new Game();
 
 btn__reset.addEventListener('click', (e) => {
     game.startGame();
-})
+});
 
 /**
  * Handles onscreen keyboard button clicks
  * @param (HTMLButtonElement) button - The clicked button element
  */
+
+
 handleInteraction(button) {
     const letter = document.querySelector(button.textContent);
 
@@ -52,7 +54,7 @@ handleInteraction(button) {
         } else if (this.checkForWin()) {
             this.gameOver(true);
         } else {
-            button.className = 'wrong'
+            button.className = 'wrong';
             this.removeLife();
         }
     });
