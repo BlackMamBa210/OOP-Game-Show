@@ -75,7 +75,7 @@ class Game {
         this.missed++;
 
         if (this.missed === 5) {
-            this.gameOver('lose');
+            this.gameOver('wrong');
         }
     };
 
@@ -94,4 +94,44 @@ class Game {
 
         document.querySelector('#overlay').style = 'visability: visible';
     };
+
+    /**
+     * Handles onscreen keyboard button clicks
+     * @param (HTMLButtonElement) button - The clicked button element
+     */
+    handleInteraction(button) {
+
+
+        document.addEventListener('click', (e) => {
+            const letter = document.querySelector(button.textContent);
+            button.disabled = true;
+
+            if (this.activePhrase.checkLetter(letter)) {
+                this.activePhrase.showMatchedLetter(letter);
+                button.className = 'chosen';
+            } else if (this.checkForWin()) {
+                this.gameOver(true);
+            } else {
+                button.className = 'wrong';
+                this.removeLife();
+            }
+        });
+        console.log(button);
+    };
 };
+
+
+
+// if (this.activePhrase) {
+//     button.disabled = true;
+//     if (this.activePhrase.checkLetter(button.textContent)) {
+//         this.activePhrase.showMatchedLetter(button.textContent);
+//         button.className = 'chosen';
+//         if (this.checkForWin()) {
+//             this.gameOver(true);
+//         }
+//     } else if (this.activePhrase) {
+//         button.className = 'wrong';
+//         this.removeLife();
+//     }
+// }
