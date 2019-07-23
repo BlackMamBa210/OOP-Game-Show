@@ -119,19 +119,3 @@ class Game {
         console.log(button);
     };
 };
-
-
-
-// if (this.activePhrase) {
-//     button.disabled = true;
-//     if (this.activePhrase.checkLetter(button.textContent)) {
-//         this.activePhrase.showMatchedLetter(button.textContent);
-//         button.className = 'chosen';
-//         if (this.checkForWin()) {
-//             this.gameOver(true);
-//         }
-//     } else if (this.activePhrase) {
-//         button.className = 'wrong';
-//         this.removeLife();
-//     }
-// }
