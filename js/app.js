@@ -36,6 +36,8 @@ btn__reset.addEventListener('click', (e) => {
     game.startGame();
 });
 
-document.getElementById('key').addEventListener('click', (e) => {
-    game.handleInteraction(e.target, null)
-})
+document.getElementById('qwerty').addEventListener('click', (e) => {
+    if (e.target.classList.contains('key')) {
+        game.handleInteraction(e.target, null);
+    };
+});
