@@ -100,8 +100,6 @@ class Game {
      * @param (HTMLButtonElement) button - The clicked button element
      */
     handleInteraction(button) {
-
-
         document.addEventListener('click', (e) => {
             const letter = document.querySelector(button.textContent);
             button.disabled = true;
