@@ -102,8 +102,8 @@ class Game {
     handleInteraction(button) {
         button.disabled = true;
 
-        if (this.activePhrase.checkLetter(letter)) {
-            this.activePhrase.showMatchedLetter(letter);
+        if (this.activePhrase.checkLetter(button.textContent)) {
+            this.activePhrase.showMatchedLetter(button.textContent);
             button.className = 'chosen';
         } else if (this.checkForWin()) {
             this.gameOver(true);
@@ -111,7 +111,7 @@ class Game {
             button.className = 'wrong';
             this.removeLife();
         }
-        console.log(button);
 
+        console.log(button);
     };
 };
