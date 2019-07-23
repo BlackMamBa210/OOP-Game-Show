@@ -100,20 +100,18 @@ class Game {
      * @param (HTMLButtonElement) button - The clicked button element
      */
     handleInteraction(button) {
-        document.addEventListener('click', (e) => {
-            const letter = document.querySelector(button.textContent);
-            button.disabled = true;
+        button.disabled = true;
 
-            if (this.activePhrase.checkLetter(letter)) {
-                this.activePhrase.showMatchedLetter(letter);
-                button.className = 'chosen';
-            } else if (this.checkForWin()) {
-                this.gameOver(true);
-            } else {
-                button.className = 'wrong';
-                this.removeLife();
-            }
-        });
+        if (this.activePhrase.checkLetter(letter)) {
+            this.activePhrase.showMatchedLetter(letter);
+            button.className = 'chosen';
+        } else if (this.checkForWin()) {
+            this.gameOver(true);
+        } else {
+            button.className = 'wrong';
+            this.removeLife();
+        }
         console.log(button);
+
     };
 };
