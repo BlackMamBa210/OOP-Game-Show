@@ -17,7 +17,7 @@ class Game {
         const phrases = [
             new Phrase("Life is like a box of chocolates"),
             new Phrase("There is no trying"),
-            new Phrase("May the foce be with you"),
+            new Phrase("May the force be with you"),
             new Phrase("You have to see the matrix for yourself"),
             new Phrase("You talking to me")
         ];
@@ -87,7 +87,9 @@ class Game {
         if (gameWon) {
             document.querySelector('#overlay').className = 'lose';
             document.querySelector('#game-over-message').textContent = 'Defeat!';
-        } else {
+        }
+
+        if () {
             document.querySelector('#overlay').className = 'win';
             document.querySelector('#game-over-message').textContent = 'Victory!';
         }
