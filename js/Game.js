@@ -129,21 +129,24 @@ class Game {
     resetGame() {
         this.activePhrase = null;
 
-        const resetUl = document.querySelector('ul'); // targets the ul tag
-        const resetLi = document.querySelectorAll('ul li'); // targets the li list of letters
-        for (let i = 0; i < resetLi.length; i++) { // loop through li list of letters
-            resetUl.removeChild(resetLi[i]); // remove li list of letters from ul
-        }
-        const resetKeys = document.querySelectorAll('.key');
-        for (let i = 0; i < resetKeys.length; i++) {
-            resetKeys[i].classList.remove('wrong', 'chosen');
-            resetKeys[i].removeAttribute('disabled'); // why doesn't setAttribute() work?
-        }
-        const resetHearts = document.querySelectorAll('img'); //img list
-        for (let i = 0; i < resetHearts.length; i++) { // loop through img list
-            resetHearts[i].setAttribute('src', './images/liveHeart.png'); // set all the lost or live heart img's back to livehearts
+        const ul = document.querySelector('ul');
+        const li = document.querySelectorAll('ul li');
+        const keys = document.querySelectorAll('.key');
+        const hearts = document.querySelectorAll('img');
+
+        for (let i = 0; i < li.length; i++) {
+            ul.removeChild(li[i]);
+        };
+
+        for (let i = 0; i < keys.length; i++) {
+            keys[i].classList.remove('wrong', 'chosen');
+            keys[i].removeAttribute('disabled');
+        };
+
+        for (let i = 0; i < hearts.length; i++) {
+            hearts[i].setAttribute('src', './images/liveHeart.png');
             this.missed = 0;
         };
-        console.log(resetLi)
+        console.log(keys)
     };
 };
