@@ -55,11 +55,17 @@ class Game {
      * @return {boolean} True if game has been won, false if game wasn't won
      */
     checkForWin() {
-        if (phrase === 0) {
-            return true;
-        } else {
-            return false;
+        const hide = document.querySelectorAll('.hide')
+
+        if (hide.length === 0) {
+            this.gameOver('win');
         }
+
+        // if (phrase === 0) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     };
 
     /**
@@ -75,7 +81,7 @@ class Game {
         this.missed++;
 
         if (this.missed === 5) {
-            this.gameOver('wrong');
+            this.gameOver('lose');
         }
     };
 
@@ -84,17 +90,20 @@ class Game {
      * @param {boolean} gameWon - Whether or not the user won the game
      */
     gameOver(gameWon) {
-        if (gameWon) {
+
+        if (gameWon === 'lose') {
             document.querySelector('#overlay').className = 'lose';
             document.querySelector('#game-over-message').textContent = 'Defeat!';
         }
 
-        if () {
+        if (gameWon === 'win') {
             document.querySelector('#overlay').className = 'win';
             document.querySelector('#game-over-message').textContent = 'Victory!';
         }
 
         document.querySelector('#overlay').style = 'visability: visible';
+
+        this.resetGame();
     };
 
     /**
@@ -107,13 +116,34 @@ class Game {
         if (this.activePhrase.checkLetter(button.textContent)) {
             this.activePhrase.showMatchedLetter(button.textContent);
             button.className = 'chosen';
-        } else if (this.checkForWin()) {
-            this.gameOver(true);
+
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            }
         } else {
             button.className = 'wrong';
             this.removeLife();
         }
+    };
 
-        console.log(button);
+    resetGame() {
+        this.activePhrase = null;
+
+        const resetUl = document.querySelector('ul'); // targets the ul tag
+        const resetLi = document.querySelectorAll('ul li'); // targets the li list of letters
+        for (let i = 0; i < resetLi.length; i++) { // loop through li list of letters
+            resetUl.removeChild(resetLi[i]); // remove li list of letters from ul
+        }
+        const resetKeys = document.querySelectorAll('.key');
+        for (let i = 0; i < resetKeys.length; i++) {
+            resetKeys[i].classList.remove('wrong', 'chosen');
+            resetKeys[i].removeAttribute('disabled'); // why doesn't setAttribute() work?
+        }
+        const resetHearts = document.querySelectorAll('img'); //img list
+        for (let i = 0; i < resetHearts.length; i++) { // loop through img list
+            resetHearts[i].setAttribute('src', './images/liveHeart.png'); // set all the lost or live heart img's back to livehearts
+            this.missed = 0;
+        };
+        console.log(resetLi)
     };
 };
