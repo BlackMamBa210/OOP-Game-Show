@@ -130,17 +130,17 @@ class Game {
         this.activePhrase = null;
 
         const ul = document.querySelector('ul');
-        const li = document.querySelectorAll('ul li');
-        const keys = document.querySelectorAll('.key');
+        const li = document.querySelectorAll('#phrase ul li');
+        const keys = document.getElementsByClassName('key');
         const hearts = document.querySelectorAll('img');
 
         for (let i = 0; i < li.length; i++) {
             ul.removeChild(li[i]);
         };
 
-        for (let i = 0; i < keys.length; i++) {
-            keys[i].classList.remove('wrong', 'chosen');
-            keys[i].removeAttribute('disabled');
+        for (let key of keys) {
+            key.className = 'key';
+            key.disabled = false;
         };
 
         for (let i = 0; i < hearts.length; i++) {
