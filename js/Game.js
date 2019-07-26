@@ -136,7 +136,7 @@ class Game {
 
         for (let i = 0; i < li.length; i++) {
             ul.removeChild(li[i]);
-        }
+        };
 
         for (let key of keys) {
             key.className = 'key';
