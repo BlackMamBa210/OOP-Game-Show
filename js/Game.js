@@ -111,42 +111,96 @@ class Game {
      * @param (HTMLButtonElement) button - The clicked button element
      */
     handleInteraction(button) {
-        button.disabled = true;
+        //put the text content of the button in a const
+        const letters = this.activePhrase.checkLetter(button.textContent)
 
-        if (this.activePhrase.checkLetter(button.textContent)) {
-            this.activePhrase.showMatchedLetter(button.textContent);
-            button.className = 'chosen';
 
-            if (this.checkForWin()) {
-                this.gameOver(true);
-            }
+        if (this.activePhrase.checkeLetter(letters)) {
+            button.disabled = true;
+            letters.classList.add('chosen');
+            this.activePhrase.ShowMatchedLetter(letters)
+            this.checkForWin();
+
         } else {
-            button.className = 'wrong';
+            button.disabled = false
+            letters.classList.add('wrong');
             this.removeLife();
+
+        };
+
+        if (this.checkForWin() === true) {
+            this.gameOver(true)
         }
+        this.resetGame();
     };
 
-    resetGame() {
-        this.activePhrase = null;
+    //create  a method that will reset your keyboard
+    resetKeyboard() {
+        const keys = document.getElementsByClassName("key");
+        for (let key of keys) {
+            key.className = "key";
+            key.disabled = false;
+        }
+        this.resetGame();
+    }
 
+    //reset the overlay you could create a method to do this.
+    resetPhrase() {
         const ul = document.querySelector('ul');
         const li = document.querySelectorAll('#phrase ul li');
-        const keys = document.getElementsByClassName('key');
-        const hearts = document.querySelectorAll('img');
 
         for (let i = 0; i < li.length; i++) {
             ul.removeChild(li[i]);
         };
-
-        for (let key of keys) {
-            key.className = 'key';
-            key.disabled = false;
-        };
+    };
+    //reset hearts you could also use a method for this
+    resetHearts() {
+        const hearts = document.querySelectorAll('img');
 
         for (let i = 0; i < hearts.length; i++) {
             hearts[i].setAttribute('src', './images/liveHeart.png');
             this.missed = 0;
         };
-        console.log(keys)
-    };
+    }
+
+    // button.disabled = true;
+    // const key = document.getElementsByClassName('.key')
+
+    // if (this.activePhrase.checkLetter(button.textContent)) {
+    //     this.activePhrase.showMatchedLetter(button.textContent);
+    //     key.classList.add('chosen');
+
+    //     if (this.checkForWin()) {
+    //         this.gameOver(true);
+    //     }
+    // } else {
+    //     key.classList.add('wrong');
+    //     this.removeLife();
+    // }
+
+    // this.resetGame();
 };
+
+// resetGame() {
+//     this.activePhrase = null;
+
+//     const ul = document.querySelector('ul');
+//     const li = document.querySelectorAll('#phrase ul li');
+//     const keys = document.getElementsByClassName('key');
+//     const hearts = document.querySelectorAll('img');
+
+//     for (let i = 0; i < li.length; i++) {
+//         ul.removeChild(li[i]);
+//     };
+
+//     for (let key of keys) {
+//         key.className = 'key';
+//         key.disabled = false;
+//     };
+
+//     for (let i = 0; i < hearts.length; i++) {
+//         hearts[i].setAttribute('src', './images/liveHeart.png');
+//         this.missed = 0;
+//     };
+//     console.log(keys)
+// };
