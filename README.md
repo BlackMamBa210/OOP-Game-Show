@@ -11,3 +11,4 @@
 * I worked on my `addPhraseToDisplay()` function. This will make the phrase available to the user within the game.
 * I ran into an issue testing it. On line 48 of `game.js` said `this line is not a function: phrase.addPhraseToDisplay();`
 * Couldn't figure out why that is so I decided to stop there for the night and come back to it the next day.
+
