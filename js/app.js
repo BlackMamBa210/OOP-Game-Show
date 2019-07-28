@@ -30,14 +30,43 @@
 // game.startGame();
 // console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 
-const game = new Game();
+let game;
 
-btn__reset.addEventListener('click', (e) => {
+//start game event listener
+document.getElementById("btn__reset").addEventListener('click', function() {
+    game = new Game();
     game.startGame();
-});
+})
 
-document.getElementById('qwerty').addEventListener('click', (e) => {
-    if (e.target.classList.contains('key')) {
-        game.handleInteraction(e.target, null);
+
+//event listner for the on screen keyboard
+document.getElementById('qwerty').addEventListener('click', function(event) {
+    const e = event.target;
+    if (e.className === "key") {
+        game.handleInteraction(e)
     };
+})
+
+
+//event listener for the start game button to reset the game
+document.getElementById("btn__reset").addEventListener('click', function() {
+    if (overlay.className === "lose" || overlay.className === "win") {
+        game.resetKeyboard();
+        game.resetOverlay();
+        game.resetLife();
+    };
+})
+
+//event listener for keyboard input.
+document.addEventListener('keydown', function(event) {
+    const keyPressed = event.key.toLowerCase();
+    const validLetters = "abcdefghijklmnopqrstuvwxyz";
+    const allKeys = document.getElementsByClassName("key");
+    if (validLetters.includes(keyPressed)) {
+        for (let key of allKeys) {
+            if (key.innerText == keyPressed) {
+                key.click();
+            }
+        }
+    }
 });
