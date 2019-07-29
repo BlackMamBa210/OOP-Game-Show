@@ -59,10 +59,10 @@ document.getElementById("btn__reset").addEventListener('click', function() {
 
 //event listener for keyboard input.
 document.addEventListener('keydown', function(event) {
-    const keyPressed = event.key.toLowerCase();
-    const validLetters = "abcdefghijklmnopqrstuvwxyz";
-    const allKeys = document.getElementsByClassName("key");
-    if (validLetters.includes(keyPressed)) {
+    const pressedkeys = event.key.toLowerCase();
+    const letters = "abcdefghijklmnopqrstuvwxyz";
+    const keys = document.getElementsByClassName("key");
+    if (letters.includes(keyPressed)) {
         for (let key of allKeys) {
             if (key.innerText == keyPressed) {
                 key.click();
