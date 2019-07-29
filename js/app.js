@@ -60,11 +60,11 @@ document.getElementById("btn__reset").addEventListener('click', function() {
 //event listener for keyboard input.
 document.addEventListener('keydown', function(event) {
     const pressedKey = event.key.toLowerCase();
-    const letters = "abcdefghijklmnopqrstuvwxyz";
+    const letters = document.querySelectorAll("qwerty")
     const keys = document.getElementsByClassName("key");
 
     if (letters.includes(pressedKey)) {
-        for (let key of allKeys) {
+        for (let key of keys) {
             if (key.innerText == pressedKey) {
                 key.click();
             }
