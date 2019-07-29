@@ -63,7 +63,7 @@ document.addEventListener('keydown', function(event) {
     const letters = "abcdefghijklmnopqrstuvwxyz";
     const keys = document.getElementsByClassName("key");
     if (letters.includes(keyPressed)) {
-        for (let key of allKeys) {
+        for (let key of keys) {
             if (key.innerText == keyPressed) {
                 key.click();
             }
