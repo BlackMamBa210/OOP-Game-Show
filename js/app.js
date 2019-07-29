@@ -59,13 +59,13 @@ document.getElementById("btn__reset").addEventListener('click', function() {
 
 //event listener for keyboard input.
 document.addEventListener('keydown', function(event) {
-    const pressedKey = event.key.toLowerCase();
+    const keyDown = event.key.toLowerCase();
     const letters = document.querySelectorAll("qwerty")
     const keys = document.getElementsByClassName("key");
 
-    if (letters.includes(pressedKey)) {
+    if (letters.includes(keyDown)) {
         for (let key of keys) {
-            if (key.innerText == pressedKey) {
+            if (key.innerText == keyDown) {
                 key.click();
             }
         }
