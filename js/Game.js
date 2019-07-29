@@ -15,14 +15,26 @@ class Game {
      */
 
     createPhrases() {
-        let phrases = [
-            new Phrase("Life is like a box of chocolates"),
-            new Phrase("There is no trying"),
-            new Phrase("May the force be with you"),
-            new Phrase("You have to see the matrix for yourself"),
-            new Phrase("You talking to me")
-        ];
-        return phrases
+        
+        let phrasesString = [{
+            "quoteText": "Genius is one percent inspiration and ninety-nine percent perspiration.",
+            "quoteAuthor": "Thomas Edison"
+            }, {
+            "quoteText": "You can observe a lot just by watching.",
+            "quoteAuthor": "Yogi Berra"
+            }, {
+            "quoteText": "A house divided against itself cannot stand.",
+            "quoteAuthor": "Abraham Lincoln"
+            }, {
+            "quoteText": "Difficulties increase the nearer we get to the goal.",
+            "quoteAuthor": "Johann Wolfgang von Goethe"
+            }, {
+            "quoteText": "Fate is in your hands and no one elses",
+            "quoteAuthor": "Byron Pulsifer"
+            }]
+        
+        
+        return phrasesString.map(p => new Phrase(p.quoteText))
     }
 
     /**
