@@ -62,6 +62,7 @@ document.addEventListener('keydown', function(event) {
     const pressedKey = event.key.toLowerCase();
     const letters = "abcdefghijklmnopqrstuvwxyz";
     const keys = document.getElementsByClassName("key");
+
     if (letters.includes(pressedKey)) {
         for (let key of allKeys) {
             if (key.innerText == pressedKey) {
